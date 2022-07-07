@@ -2,6 +2,7 @@ version: "3"
 services:
   front:
     image: node:16
+    env_file: .env
     volumes:
       - .:/usr/src
       - front_modules:/usr/src/node_modules #node_modulesはコンテナ内部で用意します
@@ -10,10 +11,6 @@ services:
     tty: true
     ports:
       - "3000:3000"
-    environment:
-      API_URL_SSR: "http://api:4000"
-      NEXT_PUBLIC_API_URL: "http://localhost:4000"
-      CHOKIDAR_USEPOLLING: true
 
 volumes:
   front_modules:
