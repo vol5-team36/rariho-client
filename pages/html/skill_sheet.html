@@ -27,11 +27,11 @@
 		
 		<main role="main">
 			<!--受信ファイルを変更する際には、actionのpathを変更する-->
-			<form action="../php/Activity_Registration.php" method="post">
+			<form action="../php/post.php" method="post">
 					
 					<div class="Form-Item">
 						<p class="Form-Item-Label">名前</p>
-						<input type="text" class="Form-Item-Input" name="SName" placeholder="例）00">
+						<input type="text" class="Form-Item-Input" name="Name" placeholder="例）田中太郎">
 					</div>
 					
 					<div class="Form-Item">
@@ -45,21 +45,22 @@
 					</div>
 					
 					<div class="Form-Item">
-						<p class="Form-Item-Label">就職先</p>
+						<p class="Form-Item-Label">選択し</p>
 						<select name="choice" class="Form-Item-Input">
-							<option value="first" >未決定</option>
-							<option value="second">決定</option>
+							<option value="first" >OK</option>
+							<option value="second">NO</option>
 						</select>
 					</div>
 					
 					<input type="submit" class="Form-Btn" value="登録">
 			</form>
 			
-			<div id="page_top"><a href="#"></a></div>
+			
 			
 		</main>
 		
 		<footer>
+			<div id="page_top"><a href="#"></a></div>
 			<p class="small">&copy; 20220707～ teamらりほー</p>
 		</footer>
 	</body>

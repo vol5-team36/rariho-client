@@ -1,13 +1,11 @@
 @charset "UTF-8";
 
+
 /*全体用*/
 body{
 	margin:0px;
 	text-align: center;
 	max-width: 1500px;
-}
-.wrapper{
-	/*未使用*/
 }
 header{
 	width: 100%;
@@ -18,7 +16,24 @@ header{
 	position: fixed;
 	z-index: 9999;
 }
-header .label a {
+main{
+	width: 100%;
+	padding-top: 50px;
+}
+h1{
+	width:730px; 
+	padding: 20px 0;
+	margin:0 auto; 
+	border:1px solid black;
+	background-color:lightseagreen;
+	color:white;
+	text-align: center;
+	font-size: 300%;
+}
+/*ここまで*/
+
+/*ナビゲーション用*/
+.label a {
 	font-weight: bold;
 	font-size: 16px;
 	padding:0 10px;
@@ -44,87 +59,41 @@ header .label a {
 	display: block;
 	position: relative;
 }
-/*リンク上にマウスカーソルを合わせたときの表示*/
 .label li a:before {
-    content: '';
-    width: 0;
-    left: 50%;
-    bottom: 0;
-    transition: all 0.3s ease;
-    border-bottom: 3px solid #000;
-    position: absolute;
-    display: block;
+	content: '';
+	width: 0;
+	left: 50%;
+	bottom: 0;
+	transition: all 0.3s ease;
+	border-bottom: 3px solid #000;
+	position: absolute;
+	display: block;
 }
 .label li a:hover:before {
-    width: 50%;
-    border-bottom: 3px solid #000;
+	width: 50%;
+	border-bottom: 3px solid #000;
 }
 .label li a:after {
-    content: '';
-    width: 0;
-    right: 50%;
-    bottom: 0;
-    transition: all 0.3s ease;
-    border-bottom: 3px solid #000;
-    position: absolute;
-    display: block;
+	content: '';
+	width: 0;
+	right: 50%;
+	bottom: 0;
+	transition: all 0.3s ease;
+	border-bottom: 3px solid #000;
+	position: absolute;
+	display: block;
 }
 .label li a:hover:after {
-    width: 50%;
-    border-bottom: 3px solid #000;
-}
-/*マウス　ここまで*/
-/*ヘッダー下に要素が隠れることを防止*/
-.main{
-	width: 100%;
-	padding-top: 50px;
-}
-
-
-
-/*student.html用*/
-
-.folding{
-	margin-bottom: 30px;
-}
-
-/*samaryでのプルダウン*/
-summary {
-	list-style: none;
-	position: relative;
-	cursor: pointer;
-	background-color: #e5f1ff;
-	margin: 5px auto;
-	padding: 20px 10px; 
-}
-summary::-webkit-details-marker {
-	display: none;
-}
-summary::after {
-	content: '+';
-	position: absolute;
-	top: 50%;
-	right: 30px;
-	transform: translateY(-50%);
-	transition: transform 0.5s;
-	font-size: 30px;
-}
-
-details{
-	margin: 2px auto;
-	width: 100%;
-}
-details[open] summary::after {
-	transform: translateY(-50%) rotate(45deg);
-}
-details[open] .answer {
-	animation: fadein 0.5s ease;
+	width: 50%;
+	border-bottom: 3px solid #000;
 }
 /*ここまで*/
 
-
-
-/*company.html studentRegistration.html index.html用*/
+/*フォーム用*/
+form{
+	max-width: 1000px;
+	margin: 0 auto;
+}
 .Form-Item {
 	border-top: 1px solid #ddd;
 	padding-top: 24px;
@@ -195,21 +164,10 @@ details[open] .answer {
 	background: #eaedf2;
 	font-size: 18px;
 }
+/*ここまで*/
 
 
-
-/*waku.html studentManagement.html用*/
-.waku{
-	background-color:#CCC;
-	height: 900px;
-	overflow-y: scroll;
-	margin: 0 auto;
-	max-width: 1000px;
-}
-.waku-area{
-	max-width: 1500px;
-}
-
+/*右下の上に行くやつ*/
 #page_top{
 	width: 50px;
 	height: 50px;
@@ -244,59 +202,4 @@ details[open] .answer {
 	margin: auto;
 	text-align: center;
 }
-	
-.Form-Item-radio{
-	display: flex;
-	border-top: 1px solid #ddd;
-	margin-left: 0;
-	padding-left: 1em;
-	padding-right: 1em;
-	align-items: center;
-	width: 100%;
-	box-sizing: content-box;
-}
-	
-.Form-Item-radio input{
-	transform: scale(1.0) !important;
-	margin: 30px;
-	
-}
-	
-.Form-Item-radio p{
-	font-size: 20px;
-}
-h1{
-	width:730px; 
-	padding: 20px 0;
-	margin:0 auto; 
-	border:1px solid black;
-	background-color:lightseagreen;
-	color:white;
-	text-align: center;
-	font-size: 300%;
-}
-
-table{
-  width: 50%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin:0 auto;
-}
-
-table th,table td{
-  padding: 10px 0;
-  text-align: center;
-}
-
-table tr:nth-child(odd){
-  background-color: #eee
-}
-table th{
-  background-color: rgb(208, 238, 255);
-}
-
-form{
-    max-width: 1000px;
-    margin: 0 auto;
-}
-	
+/*ここまで*/
