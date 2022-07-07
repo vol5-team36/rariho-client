@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+	<head>
+		<meta charset="UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="stylesheet" href="../css/style.css">
+		
+		<title>らりほー制作物_skillSheet</title>
+	</head>
+	
+	<body>
+		
+		<header>
+			<div class="label">
+				<ul>
+					<li><a href="#">TEST 01</a></li>
+					<li><a href="#">TEST 02</a></li>
+					<li><a href="#">TEST 03</a></li>
+					<li><a href="#">TEST 04</a></li>
+					<li><a href="#">TEST 05</a></li>
+				</ul>
+			</div>
+		</header>
+		
+		<main role="main">
+			<!--受信ファイルを変更する際には、actionのpathを変更する-->
+			<form action="../php/Activity_Registration.php" method="post">
+					
+					<div class="Form-Item">
+						<p class="Form-Item-Label">名前</p>
+						<input type="text" class="Form-Item-Input" name="SName" placeholder="例）00">
+					</div>
+					
+					<div class="Form-Item">
+						<p class="Form-Item-Label">日付</p>
+						<input type="date" class="Form-Item-Input" name="date"></input>
+					</div>
+					
+					<div class="Form-Item">
+						<p class="Form-Item-Label">内容</p>
+						<textarea class="Form-Item-Input" name="cont"></textarea>
+					</div>
+					
+					<div class="Form-Item">
+						<p class="Form-Item-Label">就職先</p>
+						<select name="choice" class="Form-Item-Input">
+							<option value="first" >未決定</option>
+							<option value="second">決定</option>
+						</select>
+					</div>
+					
+					<input type="submit" class="Form-Btn" value="登録">
+			</form>
+			
+			<div id="page_top"><a href="#"></a></div>
+			
+		</main>
+		
+		<footer>
+			<p class="small">&copy; 20220707～ teamらりほー</p>
+		</footer>
+	</body>
+</html>
