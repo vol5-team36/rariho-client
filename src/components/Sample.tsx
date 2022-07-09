@@ -2,14 +2,17 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
+type Props = {
+    title: string
+}
 
-export default function Sample() {
+export default function Sample(props: Props) {
     return (
       <Autocomplete
         disablePortal
         id="combo-box-demo"
         options={skills}
-        renderInput={(params) => <TextField {...params} label="言語" />}
+        renderInput={(params) => <TextField {...params} label={props.title} />}
       />
     );
   }

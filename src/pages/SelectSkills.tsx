@@ -4,8 +4,8 @@ import Sample from '../components/Sample'
 const SelectSkills = () => {
   return (
     <div>
-        <Sample />
-        <Sample />
+        <Sample title="langage"/>
+        <Sample title="framework"/>
     </div>
     
   )
