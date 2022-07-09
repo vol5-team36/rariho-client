@@ -6,31 +6,11 @@ import Footer from '../components/Footer';
 
 export default function MainPage(){
   return (
-<Grid container>
+    <Grid container direction="column">
       <Header />
-      <Grid item xs = {6}>
-        <div style={{ padding: 30 }}>
-          <Content 
-            setName = {setName}
-            setTwitter = {setTwitter}
-            setGithub = {setGithub}
-            setOtherurl = {setOtherurl}
-            setComment = {setComment}
-          />
-        </div>
-      </Grid>
-    
-      <Grid item xs = {6}>
-        
-        <Preview 
-          name = {name}
-          twitter = {twitter}
-          github = {github}
-          url ={otherurl}
-          comment = {comment}
-        />
-      </Grid>
-     
+      <div style={{ padding: 30 }}>
+        <Content />
+      </div>
       <Footer />
     </Grid>
   )
