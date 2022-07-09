@@ -4,6 +4,8 @@ import SelectSkills from './pages/SelectSkills';
 import MainPage from './pages/MainPage';
 
 
+
+
 function App() {
   return (
     <MainPage />
