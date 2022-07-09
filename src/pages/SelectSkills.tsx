@@ -112,5 +112,5 @@ const SelectSkills = () => {
     
   )
 }
-
+//未使用のコード
 export default SelectSkills
