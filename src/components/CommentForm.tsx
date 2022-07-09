@@ -50,18 +50,7 @@ export default () => {
 
   return (
     <form action="" onSubmit={(e) => handleOnSubmit(e)}>
-      <TextField
-        name="comment"
-        value={commentText}
-        multiline
-        minRows={1}
-        maxRows={20}
-        placeholder="コメントを書く"
-        fullWidth
-        variant="standard"
-        disabled={isCommentSending}
-        onChange={(e) => setCommentText(e.target.value)}
-      />
+
       {/* 1つのボタンで画像を選択する */}
       <label htmlFor={inputId}>
         <Button
@@ -114,20 +103,6 @@ export default () => {
         
       ))    
       }
-      <br />
-      <br />
-      {isCommentSending ? (
-        <CircularProgress />
-      ) : (
-        <Button
-          variant="contained"
-          type="submit"
-          disableElevation
-          disabled={!commentText}
-        >
-          投稿
-        </Button>
-      )}
     </form>
   );
 };

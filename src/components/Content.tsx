@@ -24,14 +24,29 @@ function getSteps() {
 
 export default function Content() {
     const [activeStep, setActiveStep] = React.useState(0);
+    const [name, setName] = React.useState("");
+    const [twitter, setTwitter] = React.useState("");
+    const [github, setGithub] = React.useState("");
+    const [url, seturl] = React.useState("");
+    const [comment, setComment] = React.useState("");
+    const [skills, setSkills] = React.useState<Skill[]>([]);
     const steps = getSteps();
+
+    
+
+    type Skill = {
+        id: number;
+        skillid: number;
+        label: string;
+        rank: number;
+    };
 
     const getStepContent = (stepIndex: number) => {
         switch (stepIndex) {
             case 0:
-                return <BasicForm handleNext={handleNext} />;
+                return <BasicForm name={name} twitter={twitter} github={github} url={url} comment={comment} namemethod={setName} twittermethod={setTwitter} githubmethod={setGithub} urlmethod={seturl} commentmethod={setComment} />;
             case 1:
-                return 'フォーム　2 のコンテンツを表示';
+                return <SelectSkills method={setSkills}/>;
             case 2:
                 return 'フォーム　3 のコンテンツを表示';
             default:
@@ -51,9 +66,9 @@ export default function Content() {
 
     return (
         <Grid container>
-            <Grid sm={2}/>
-            <Grid lg={8} sm={8} spacing={10}>
-                <Stepper activeStep={activeStep} alternativeLabel>
+            <Grid item sm={2}/>
+            <Grid item lg={8} sm={8} spacing={10}>
+                <Stepper activeStep={activeStep} alternativeLabel >
                     {steps.map((label) => (
                         <Step key={label}>
                             <StepLabel>{label}</StepLabel>

@@ -8,6 +8,7 @@ type Props = {
     title: string
     skills: Skill[]
     method: any
+    method2: any
 }
 
 type Skill = {
@@ -50,6 +51,7 @@ export default function Sample(props: Props) {
             }
         }
         props.method([...props.skills, newskill])
+        props.method2([...props.skills, newskill])
     };
 
     return (
