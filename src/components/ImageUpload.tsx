@@ -9,7 +9,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 export default () => {
   const [isCommentSending, setIsCommentSending] = useState(false);
   const [images, setImages] = useState<File[]>([]);
-  const maxImagesUpload = 5; // 画像を最大4枚まで選択・アップロード
+  const maxImagesUpload = 1; // 画像を最大1枚まで選択・アップロード
   const [commentText, setCommentText] = useState<string>("");
   const inputId = Math.random().toString(32).substring(2);
 
@@ -50,7 +50,9 @@ export default () => {
 
   return (
     <form action="" onSubmit={(e) => handleOnSubmit(e)}>
-      <TextField
+      
+      {/*コメント入力可能(仕様外)
+        <TextField
         name="comment"
         value={commentText}
         multiline
@@ -62,6 +64,8 @@ export default () => {
         disabled={isCommentSending}
         onChange={(e) => setCommentText(e.target.value)}
       />
+      */}
+
       {/* 1つのボタンで画像を選択する */}
       <label htmlFor={inputId}>
         <Button
@@ -69,7 +73,7 @@ export default () => {
           disabled={images.length >= maxImagesUpload}
           component="span"
         >
-          画像追加
+          アイコン画像追加
         </Button>
         <input
           id={inputId}
@@ -80,7 +84,7 @@ export default () => {
                     handleOnAddImage(e.target.files)
                 }
           }
-          //style={{ display: "none" }}
+          style={{ display: "none" }}
         />
       </label>
       {/* 画像を選択したら選択中のすべての画像のプレビューを表示 */}
@@ -116,7 +120,8 @@ export default () => {
       }
       <br />
       <br />
-      {isCommentSending ? (
+      {
+      /*isCommentSending ? (
         <CircularProgress />
       ) : (
         <Button
@@ -127,7 +132,8 @@ export default () => {
         >
           投稿
         </Button>
-      )}
+      )
+      */}
     </form>
   );
 };
