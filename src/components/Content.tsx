@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Container, Stack, TextField } from '@mui/material'
 import Sample from './Sample';
+import CommentForm from './Test';
 
 export default function Content() {
     return (
@@ -14,9 +15,23 @@ export default function Content() {
                 <Sample />
                 <Sample />
 
+                <Button variant="contained" component="label">
+                    Upload File
+                    <input type="file" accept="image/*" hidden/>
+                </Button>
+                <label htmlFor="select-image">
+                    <Button variant="contained" color="primary" component="span">
+                    Upload Image
+                    </Button>
+                </label>
+
+                <CommentForm />
+                
+
                 <Button color="primary" variant="contained" size="large">
                 送信
                 </Button>
+
             </Stack>
         </Container>
     )
