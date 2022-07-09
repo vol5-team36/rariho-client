@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
+import SelectSkills from './pages/SelectSkills';
+import Container from '@mui/material/Container';
 
 function App() {
   return (
-    <div className="App">
-      hello
-    </div>
+    <Container maxWidth="sm">
+        <SelectSkills />
+    </Container>
   );
 }
 
