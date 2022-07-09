@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Container, Stack, TextField } from '@mui/material'
-import Sample from './Sample';
 import CommentForm from './Test';
+import SelectSkills from '../pages/SelectSkills'
 
 export default function Content() {
     return (
@@ -12,8 +12,7 @@ export default function Content() {
                 <TextField required label="GitHub" />
                 <TextField required label="その他URL" />
                 <TextField required inputProps={{ maxLength: 40 }} label="ひとこと" />
-                <Sample />
-                <Sample />
+                <SelectSkills />
 
                 <Button variant="contained" component="label">
                     Upload File
