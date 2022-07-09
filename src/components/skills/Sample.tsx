@@ -7,6 +7,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
 type Props = {
     title: string
@@ -29,10 +34,9 @@ export default function Sample(props: Props) {
     const handleChange = (v: any) => {
         console.log(v);
         setInputValue(v);
-    }
+    };
 
     const handleSubmit = (e: any) => {
-        
         e.preventDefault();
         const newskill: Skill = {
             id: skills.length,
@@ -46,16 +50,23 @@ export default function Sample(props: Props) {
             }
         }
         setSkills([...skills, newskill])
-    }
+    };
+
     const rankChange = (event: SelectChangeEvent, id: any) => {
         skills[id].rank = Number(event.target.value);
         setRank(event.target.value as string);
         
-      };
+    };
+
+    const handleDelete = (id: Number) => {
+        const newSkills = skills.filter((skill) => skill.id !== id);
+        setSkills(newSkills)
+    };
+
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <Grid  sx = {{ m: 1 }} container spacing={2} alignItems="flex-end">
+                <Grid  sx = {{ mt: 1 }} container spacing={2} alignItems="flex-end">
                     
                     <Grid item xs={8}>
                         <Autocomplete
@@ -73,11 +84,11 @@ export default function Sample(props: Props) {
                     
                 </Grid>
             </form>
-            <ul>
+            <List>
                 {skills.map((skill) => (
-                    <li key={skill.id.toString()}>
-                        {skill.label}
-                        <FormControl fullWidth>
+                    <ListItem key={skill.id.toString()}>
+                        <ListItemText primary={skill.label} />
+                        <FormControl>
                             <InputLabel id="demo-simple-select-label">Rank</InputLabel>
                                 <Select
                                 labelId="demo-simple-select-label"
@@ -98,9 +109,14 @@ export default function Sample(props: Props) {
                                 <MenuItem value={9}>F</MenuItem>
                             </Select>
                         </FormControl>
-                    </li>
+
+                            <IconButton aria-label="Delete" onClick={() => handleDelete(skill.id)}>
+                                <DeleteIcon />
+                            </IconButton>
+
+                    </ListItem>
                 ))}
-            </ul>
+            </List>
         </div>
       
     );
