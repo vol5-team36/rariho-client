@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Sample from '../components/skills/PulldownSkillMenu'
+import PulldownSkillMenu from '../components/skills/PulldownSkillMenu'
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
@@ -12,7 +12,13 @@ import ListItemText from '@mui/material/ListItemText';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-const SelectSkills = () => {
+type Props = {
+    method: any
+}
+
+const SelectSkills = (props: Props) => {
+    
+
 
     const [inputValue, setInputValue] = useState<Skill>({id: 0,skillid: 0, label: "",rank: 0});
     const [skills, setSkills] = useState<Skill[]>([]);
@@ -34,6 +40,7 @@ const SelectSkills = () => {
     const handleDelete = (id: number) => {
         const newSkills = skills.filter((skill) => skill.id !== id);
         setSkills(newSkills)
+        props.method(newSkills)
     };
 
     const handleUp = (id: number) => {
@@ -48,6 +55,7 @@ const SelectSkills = () => {
         copy[id -1].id = swapid;
 
         setSkills(copy);
+        props.method(copy)
 
     };
 
@@ -63,12 +71,13 @@ const SelectSkills = () => {
         copy[id+1].id = swapid;
 
         setSkills(copy);
+        props.method(copy)
     };
 
   return (
     <div>
-        <Sample title="langage" skills={skills} method = {setSkills}/>
-        <Sample title="flamework" skills={skills} method = {setSkills}/>
+        <PulldownSkillMenu title="langage" skills={skills} method = {setSkills} method2 = {props.method}/>
+        <PulldownSkillMenu title="flamework" skills={skills} method = {setSkills} method2 = {props.method}/>
         <List>
             {skills.map((skill) => (
                 <ListItem key={skill.id.toString()}>
