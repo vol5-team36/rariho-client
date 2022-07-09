@@ -8,7 +8,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Typography from '@mui/material/Typography';
 import BasicForm from '../pages/BasicForm';
-
+import Preview from './Preview';
 
 function getSteps() {
     return [
@@ -48,7 +48,7 @@ export default function Content() {
             case 1:
                 return <SelectSkills method={setSkills}/>;
             case 2:
-                return 'フォーム　3 のコンテンツを表示';
+                return <Preview name={name} twitter={twitter} github={github} url={url} comment={comment}  />;
             default:
                 return 'Unknown stepIndex';
         }
