@@ -12,6 +12,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 type Props = {
     title: string
@@ -25,10 +27,10 @@ export default function Sample(props: Props) {
     const [rank, setRank] = React.useState('');
       
     type Skill = {
-        id: Number;
-        skillid: Number;
+        id: number;
+        skillid: number;
         label: string;
-        rank: Number;
+        rank: number;
     };
 
     const handleChange = (v: any) => {
@@ -58,15 +60,44 @@ export default function Sample(props: Props) {
         
     };
 
-    const handleDelete = (id: Number) => {
+    const handleDelete = (id: number) => {
         const newSkills = skills.filter((skill) => skill.id !== id);
         setSkills(newSkills)
+    };
+
+    const handleUp = (id: number) => {
+        if(id === 0)return;
+        const copy = skills.concat();
+        const swap = copy[id];
+        copy[id] = copy[id-1];
+        copy[id -1] = swap;
+
+        const swapid = copy[id].id;
+        copy[id].id = copy[id-1].id;
+        copy[id -1].id = swapid;
+
+        setSkills(copy);
+
+    };
+
+    const handleDown = (id: number) => {
+        if(id === skills.length - 1)return;
+        const copy = skills.concat();
+        const swap = copy[id];
+        copy[id] = copy[id+1];
+        copy[id+1] = swap;
+
+        const swapid = copy[id].id;
+        copy[id].id = copy[id+1].id;
+        copy[id+1].id = swapid;
+
+        setSkills(copy);
     };
 
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <Grid  sx = {{ mt: 1 }} container spacing={2} alignItems="flex-end">
+                <Grid container sx = {{ mt: 1 }}  spacing={2} alignItems="center" >
                     
                     <Grid item xs={8}>
                         <Autocomplete
@@ -87,6 +118,12 @@ export default function Sample(props: Props) {
             <List>
                 {skills.map((skill) => (
                     <ListItem key={skill.id.toString()}>
+                        <IconButton onClick={() => handleUp(skill.id)}>
+                            <ArrowDropUpIcon />
+                        </IconButton>
+                        <IconButton onClick={() => handleDown(skill.id)}>
+                            <ArrowDropDownIcon />
+                        </IconButton>
                         <ListItemText primary={skill.label} />
                         <FormControl>
                             <InputLabel id="demo-simple-select-label">Rank</InputLabel>
@@ -110,9 +147,9 @@ export default function Sample(props: Props) {
                             </Select>
                         </FormControl>
 
-                            <IconButton aria-label="Delete" onClick={() => handleDelete(skill.id)}>
-                                <DeleteIcon />
-                            </IconButton>
+                        <IconButton aria-label="Delete" onClick={() => handleDelete(skill.id)}>
+                            <DeleteIcon />
+                        </IconButton>
 
                     </ListItem>
                 ))}
@@ -128,5 +165,6 @@ export default function Sample(props: Props) {
     { label: 'c++', id: 2 },
     { label: 'c#', id: 3 },
     { label: 'Python', id: 4 },
+    { label: 'php', id: 5 },
   ];
   
