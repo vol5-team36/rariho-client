@@ -52,6 +52,7 @@ export default function Content() {
                 //console.log(icon[0]);
 
                 return <Preview name={name} twitter={twitter} github={github} url={url} comment={comment}  skills = {skills} icon={icon}/>;
+                
             default:
                 return 'Unknown stepIndex';
         }
