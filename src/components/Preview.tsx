@@ -7,6 +7,7 @@ type Props = {
     github:string,
     comment:string,
     url:string,
+    icon:any,
 }
 
 function Preview(p:Props){
@@ -37,6 +38,24 @@ function Preview(p:Props){
                     comment:{p.comment}
                 </h1>
             </Typography> 
+            
+
+            <div
+            style={{
+                position: "relative",
+                width: "40%"
+            }}
+            >
+            <img
+                src={
+                URL.createObjectURL(p.icon[0])
+                }
+                style={{
+                width: "100%"
+                }}
+            />
+            </div>
+        
         </Box>
     );
 }
