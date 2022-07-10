@@ -75,9 +75,10 @@ export default function Sample(props: Props) {
     };
 
     useEffect(() => {
-        axios.get(`http://ec2-3-239-217-103.compute-1.amazonaws.com/api/skills`)
+        axios.get(process.env.REACT_APP_API_URL + `/api/skills`)
         .then(res => {
           console.log(res.data.skills[props.title]);
+          serList(res.data.skills[props.title]);
         })
             
     }, []);
