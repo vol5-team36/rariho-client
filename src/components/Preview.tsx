@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState}from 'react';
 import {Typography} from '@mui/material';
 import {Box} from '@mui/material';
 import {Button} from '@mui/material';
@@ -23,6 +23,15 @@ type Props = {
     icon:any,
 }
 
+type Skill = {
+    id: number;
+    order:number;
+    skillid: number;
+    name: string;
+    rank: number;
+    type: string;
+};
+
 function Rank(i:number){
     switch(i){
         case 1:
@@ -46,11 +55,16 @@ function Rank(i:number){
     }
 }
 
+
+
 function getBase64(file:any) {
+    if(!file)return "";
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
       console.log(reader.result);
+      return reader.result;
+
     };
     reader.onerror = function (error) {
       console.log('Error: ', error);
@@ -58,6 +72,12 @@ function getBase64(file:any) {
  }
 
 function Preview(p:Props){
+    const [inputValue, setInputValue] = useState(0);
+    let skillary =p.skills;
+    skillary.forEach((skill:Skill,i:number) => {
+        skill.order=i;
+    });
+
     const data= {
             "name":p.name,
             "image":getBase64(p.icon[0]),
@@ -67,6 +87,8 @@ function Preview(p:Props){
             "comment":p.comment,
             "skills":p.skills
     }
+    let profile_id=0;
+
     return(
         <Box component = "div" sx={{
             //color:'primary.main',
@@ -119,14 +141,21 @@ function Preview(p:Props){
             />
             </div>
 
+
             <Button onClick={()=>axios.post('http://ec2-3-239-217-103.compute-1.amazonaws.com/api/profiles',data)
                                         .then(responce=>{
                                             console.log("posting");
-                                            console.log(responce);
+                                            
+                                            profile_id=responce.data.profile_id;
+                                            setInputValue(profile_id);
+                                            console.log("id"+profile_id);
                                         })}>upload </Button>
+            <div>{inputValue!=0?"share/"+inputValue:"no rink"}</div>
 
         </Box>
         
+    
+
     );
 }
 export default Preview;
