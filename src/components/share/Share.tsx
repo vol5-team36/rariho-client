@@ -6,7 +6,7 @@ const Share = () => {
   
   return (
     <>
-      <div>Posts</div>
+      <div>自己紹介カード</div>
       <Outlet />
     </>
   )
