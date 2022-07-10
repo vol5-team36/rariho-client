@@ -36,7 +36,7 @@ export default function Content() {
     type Skill = {
         id: number;
         skillid: number;
-        label: string;
+        name: string;
         rank: number;
     };
 
@@ -66,7 +66,7 @@ export default function Content() {
     return (
         <Grid container>
             <Grid item sm={2}/>
-            <Grid item lg={8} sm={8} spacing={10}>
+            <Grid item lg={8} sm={8} >
                 <Stepper activeStep={activeStep} alternativeLabel >
                     {steps.map((label) => (
                         <Step key={label}>

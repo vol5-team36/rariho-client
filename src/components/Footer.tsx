@@ -6,7 +6,7 @@ const Footer = () => {
     <AppBar position="static" style={{ backgroundColor: "#000000" }}>
       <Toolbar>
         <div id="page_top"><a href="#"></a></div>
-		<p>&copy; 2022 teamらりほー</p>
+		<div>&copy; 2022 teamらりほー</div>
       </Toolbar>
     </AppBar>
   );
