@@ -39,6 +39,7 @@ export default function Content() {
         skillid: number;
         name: string;
         rank: number;
+        type: string;
     };
 
     const getStepContent = (stepIndex: number) => {
@@ -65,7 +66,6 @@ export default function Content() {
     const handleReset = () => {
         setActiveStep(0);
     };
-
     return (
         <Grid container>
             <Grid item sm={2}/>
