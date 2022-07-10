@@ -1,16 +1,60 @@
 import React from 'react';
 import {Typography} from '@mui/material';
 import {Box} from '@mui/material';
+import {Button} from '@mui/material';
+import axios from 'axios';
 type Props = {
     name:string,
     twitter:string,
     github:string,
     comment:string,
     url:string,
+    skills:any,
     icon:any,
 }
 
+function Rank(i:number){
+    switch(i){
+        case 1:
+            return('sss');
+        case 2:
+            return('ss');
+        case 3:
+            return('s');
+        case 4:
+            return('a');
+        case 5:
+            return('b');
+        case 6:
+            return('c');
+        case 7:
+            return('d');
+        case 8:
+            return('e');
+        case 9:
+            return('f');
+    }
+}
+function getBase64(file:any) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      console.log(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+ }
 function Preview(p:Props){
+    const data= {
+            "name":p.name,
+            "image":getBase64(p.icon[0]),
+            "github_account":p.github,
+            "twitter_account":p.twitter,
+            "url":p.url,
+            "comment":p.comment,
+            "skills":p.skills
+    }
     return(
         <Box component = "div" sx={{
             //color:'primary.main',
@@ -37,7 +81,13 @@ function Preview(p:Props){
                 <h1>
                     comment:{p.comment}
                 </h1>
+                <ul>
+                    {p.skills.map((skill:any)=>
+                        <h1>{skill.name}:{Rank(skill.rank)}</h1>     
+                    )}
+                </ul>
             </Typography> 
+            
             
 
             <div
@@ -55,8 +105,13 @@ function Preview(p:Props){
                 }}
             />
             </div>
-        
+            <Button onClick={()=>axios.post('http://ec2-3-239-217-103.compute-1.amazonaws.com/api/profiles',data)
+                                        .then(responce=>{
+                                            console.log("posting");
+                                            console.log(responce);
+                                        })}>upload </Button>
         </Box>
+        
     );
 }
 export default Preview;
