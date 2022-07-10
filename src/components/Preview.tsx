@@ -3,6 +3,16 @@ import {Typography} from '@mui/material';
 import {Box} from '@mui/material';
 import {Button} from '@mui/material';
 import axios from 'axios';
+
+import pic from "../Images/E.png"
+
+const ErrorImage = (e: any) => {
+    if (e == undefined) return pic;
+    return URL.createObjectURL(e)
+};
+
+
+
 type Props = {
     name:string,
     twitter:string,
@@ -35,6 +45,7 @@ function Rank(i:number){
             return('f');
     }
 }
+
 function getBase64(file:any) {
     var reader = new FileReader();
     reader.readAsDataURL(file);
@@ -45,6 +56,7 @@ function getBase64(file:any) {
       console.log('Error: ', error);
     };
  }
+
 function Preview(p:Props){
     const data= {
             "name":p.name,
@@ -98,18 +110,21 @@ function Preview(p:Props){
             >
             <img
                 src={
-                URL.createObjectURL(p.icon[0])
+                    //URL.createObjectURL(p.icon[0])
+                    ErrorImage(p.icon[0])
                 }
                 style={{
                 width: "100%"
                 }}
             />
             </div>
+
             <Button onClick={()=>axios.post('http://ec2-3-239-217-103.compute-1.amazonaws.com/api/profiles',data)
                                         .then(responce=>{
                                             console.log("posting");
                                             console.log(responce);
                                         })}>upload </Button>
+
         </Box>
         
     );

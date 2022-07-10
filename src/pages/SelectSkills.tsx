@@ -20,7 +20,7 @@ const SelectSkills = (props: Props) => {
     
 
 
-    const [inputValue, setInputValue] = useState<Skill>({id: 0,skillid: 0, name: "",rank: 0});
+    const [inputValue, setInputValue] = useState<Skill>({id: 0,skillid: 0, name: "",rank: 0,type: ""});
     const [skills, setSkills] = useState<Skill[]>([]);
     const [rank, setRank] = React.useState('');
       
@@ -29,6 +29,7 @@ const SelectSkills = (props: Props) => {
         skillid: number;
         name: string;
         rank: number;
+        type: string;
     };
 
     const rankChange = (event: SelectChangeEvent, id: any) => {
