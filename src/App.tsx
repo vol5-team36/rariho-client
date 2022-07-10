@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import MainPage from './pages/MainPage';
+import PageFrame from './pages/PageFrame';
 
 
 
 
 function App() {
   return (
-    <MainPage />
+    <PageFrame />
   );
 }
 
