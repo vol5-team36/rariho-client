@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState}from 'react';
 import {Typography} from '@mui/material';
 import {Box} from '@mui/material';
 import axios from 'axios';
@@ -20,6 +20,17 @@ type Props = {
     skills:any,
     icon:any,
 }
+<<<<<<< Updated upstream
+=======
+type Skill = {
+    id: number;
+    order:number;
+    skillid: number;
+    name: string;
+    rank: number;
+    type: string;
+};
+>>>>>>> Stashed changes
 function Rank(i:number){
     switch(i){
         case 1:
@@ -42,7 +53,40 @@ function Rank(i:number){
             return('f');
     }
 }
+<<<<<<< Updated upstream
 function Preview(p:Props){
+=======
+
+function getBase64(file:any) {
+    if(!file)return "";
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      console.log(reader.result);
+      return reader.result;
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+ }
+
+function Preview(p:Props){
+    const [inputValue, setInputValue] = useState(0);
+    let skillary =p.skills;
+    skillary.forEach((skill:Skill,i:number) => {
+        skill.order=i;
+    });
+    const data= {
+            "name":p.name,
+            "image":getBase64(p.icon[0]),
+            "github_account":p.github,
+            "twitter_account":p.twitter,
+            "url":p.url,
+            "comment":p.comment,
+            "skills":p.skills
+    }
+    let profile_id=0;
+>>>>>>> Stashed changes
     return(
         <Box component = "div" sx={{
             //color:'primary.main',
@@ -93,7 +137,22 @@ function Preview(p:Props){
                 }}
             />
             </div>
+<<<<<<< Updated upstream
             
+=======
+
+            <Button onClick={()=>axios.post('http://ec2-3-239-217-103.compute-1.amazonaws.com/api/profiles',data)
+                                        .then(responce=>{
+                                            console.log("posting");
+                                            
+                                            profile_id=responce.data.profile_id;
+                                            setInputValue(profile_id);
+                                            console.log("id"+profile_id);
+                                        })}>upload </Button>
+            <div>{inputValue!=0?"share/"+inputValue:"no rink"}</div>
+
+        </Box>
+>>>>>>> Stashed changes
         
         </Box>
     );
