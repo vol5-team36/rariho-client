@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import axios from 'axios';
 
 type Props = {
     title: string
@@ -14,7 +15,7 @@ type Props = {
 type Skill = {
     id: number;
     skillid: number;
-    label: string;
+    name: string;
     rank: number;
 };
 
@@ -22,19 +23,38 @@ type Skill = {
 
 export default function Sample(props: Props) {
 
-    const [inputValue, setInputValue] = useState<Skill>({id: 0,skillid: 0, label: "",rank: 0});
+    const [inputValue, setInputValue] = useState<Skill>({id: 0,skillid: 0, name: "",rank: 0});
+    const [list, serList] = useState([
+                                        { id: 1, name: "java" },
+                                        { id: 2, name: 'c++'},
+                                        { id: 3, name: 'c#'},
+                                        { id: 4, name: 'Python'},
+                                        { id: 5, name: 'JavaScript'},
+                                        { id: 6, name: 'Objective-C'},
+                                        { id: 7, name: 'Scala'},
+                                        { id: 8, name: 'Go'},
+                                        { id: 9, name: 'Swift'},
+                                        { id: 10, name: 'Kotlin'},
+                                        { id: 11, name: 'Rust'},
+                                    ])
+    
       
     type Skill = {
         id: number;
         skillid: number;
-        label: string;
+        name: string;
         rank: number;
     };
+
+    
+
+
 
     const handleChange = (v: any) => {
         console.log(v);
         setInputValue(v);
     };
+
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -42,7 +62,7 @@ export default function Sample(props: Props) {
         const newskill: Skill = {
             id: props.skills.length,
             skillid: inputValue.id,
-            label: inputValue.label,
+            name: inputValue.name,
             rank: 9,
         };
         for(var i = 0;i < props.skills.length;i++){
@@ -54,6 +74,14 @@ export default function Sample(props: Props) {
         props.method2([...props.skills, newskill])
     };
 
+    useEffect(() => {
+        axios.get(`http://ec2-3-239-217-103.compute-1.amazonaws.com/api/skills`)
+        .then(res => {
+          console.log(res.data.skills[props.title]);
+        })
+            
+    }, []);
+
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
@@ -64,6 +92,7 @@ export default function Sample(props: Props) {
                             disablePortal
                             id="combo-box-demo"
                             options={list}
+                            getOptionLabel={(option) => option.name}
                             onChange={(e,v) => handleChange(v)}
                             renderInput={(params) => <TextField {...params} label={props.title} />}
                         />
@@ -80,18 +109,4 @@ export default function Sample(props: Props) {
     );
   }
   
-  // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-  const list = [
-    { label: 'java', id: 1 },
-    { label: 'c++', id: 2 },
-    { label: 'c#', id: 3 },
-    { label: 'Python', id: 4 },
-    { label: 'JavaScript', id: 5 },
-    { label: 'Objective-C', id: 6 },
-    { label: 'Scala', id: 7 },
-    { label: 'Go', id: 8 },
-    { label: 'Swift', id: 9 },
-    { label: 'Kotlin', id: 10 },
-    { label: 'Rust', id: 11 },
-  ];
   
