@@ -20,14 +20,14 @@ const SelectSkills = (props: Props) => {
     
 
 
-    const [inputValue, setInputValue] = useState<Skill>({id: 0,skillid: 0, label: "",rank: 0});
+    const [inputValue, setInputValue] = useState<Skill>({id: 0,skillid: 0, name: "",rank: 0});
     const [skills, setSkills] = useState<Skill[]>([]);
     const [rank, setRank] = React.useState('');
       
     type Skill = {
         id: number;
         skillid: number;
-        label: string;
+        name: string;
         rank: number;
     };
 
@@ -76,8 +76,8 @@ const SelectSkills = (props: Props) => {
 
   return (
     <div>
-        <PulldownSkillMenu title="langage" skills={skills} method = {setSkills} method2 = {props.method}/>
-        <PulldownSkillMenu title="flamework" skills={skills} method = {setSkills} method2 = {props.method}/>
+        <PulldownSkillMenu title="languages" skills={skills} method = {setSkills} method2 = {props.method}/>
+        <PulldownSkillMenu title="frameworks" skills={skills} method = {setSkills} method2 = {props.method}/>
         <List>
             {skills.map((skill) => (
                 <ListItem key={skill.id.toString()}>
@@ -87,7 +87,7 @@ const SelectSkills = (props: Props) => {
                     <IconButton onClick={() => handleDown(skill.id)}>
                         <ArrowDropDownIcon />
                     </IconButton>
-                    <ListItemText primary={skill.label} />
+                    <ListItemText primary={skill.name} />
                     <FormControl>
                         <InputLabel id="demo-simple-select-label">Rank</InputLabel>
                             <Select
