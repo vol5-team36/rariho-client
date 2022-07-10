@@ -150,7 +150,7 @@ function Preview(p:Props){
                                             setInputValue(profile_id);
                                             console.log("id"+profile_id);
                                         })}>upload </Button>
-            <div>{inputValue!=0?"share/"+inputValue:"no rink"}</div>
+            <div>{inputValue!=0?"shares/"+inputValue:"no rink"}</div>
 
         </Box>
         
