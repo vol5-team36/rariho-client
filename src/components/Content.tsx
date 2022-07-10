@@ -48,7 +48,9 @@ export default function Content() {
             case 1:
                 return <SelectSkills method={setSkills}/>;
             case 2:
-                return <Preview name={name} twitter={twitter} github={github} url={url} comment={comment}  />;
+                //console.log(icon[0]);
+
+                return <Preview name={name} twitter={twitter} github={github} url={url} comment={comment}  icon={icon}/>;
             default:
                 return 'Unknown stepIndex';
         }
