@@ -39,6 +39,7 @@ export default function Content() {
         skillid: number;
         name: string;
         rank: number;
+        type: string;
     };
 
     const getStepContent = (stepIndex: number) => {
@@ -51,6 +52,7 @@ export default function Content() {
                 //console.log(icon[0]);
 
                 return <Preview name={name} twitter={twitter} github={github} url={url} comment={comment}  skills = {skills} icon={icon}/>;
+                
             default:
                 return 'Unknown stepIndex';
         }
@@ -65,7 +67,6 @@ export default function Content() {
     const handleReset = () => {
         setActiveStep(0);
     };
-
     return (
         <Grid container>
             <Grid item sm={2}/>

@@ -3,6 +3,7 @@ import {Typography} from '@mui/material';
 import {Box} from '@mui/material';
 import {Button} from '@mui/material';
 import axios from 'axios';
+
 import pic from "../Images/E.png"
 
 const ErrorImage = (e: any) => {
@@ -21,6 +22,7 @@ type Props = {
     skills:any,
     icon:any,
 }
+
 type Skill = {
     id: number;
     order:number;
@@ -29,6 +31,7 @@ type Skill = {
     rank: number;
     type: string;
 };
+
 function Rank(i:number){
     switch(i){
         case 1:
@@ -53,6 +56,7 @@ function Rank(i:number){
 }
 
 
+
 function getBase64(file:any) {
     if(!file)return "";
     var reader = new FileReader();
@@ -60,6 +64,7 @@ function getBase64(file:any) {
     reader.onload = function () {
       console.log(reader.result);
       return reader.result;
+
     };
     reader.onerror = function (error) {
       console.log('Error: ', error);
@@ -72,6 +77,7 @@ function Preview(p:Props){
     skillary.forEach((skill:Skill,i:number) => {
         skill.order=i;
     });
+
     const data= {
             "name":p.name,
             "image":getBase64(p.icon[0]),
@@ -82,6 +88,7 @@ function Preview(p:Props){
             "skills":p.skills
     }
     let profile_id=0;
+
     return(
         <Box component = "div" sx={{
             //color:'primary.main',
@@ -115,6 +122,7 @@ function Preview(p:Props){
                 </ul>
             </Typography> 
             
+            
 
             <div
             style={{
@@ -132,7 +140,7 @@ function Preview(p:Props){
                 }}
             />
             </div>
-            
+
 
             <Button onClick={()=>axios.post('http://ec2-3-239-217-103.compute-1.amazonaws.com/api/profiles',data)
                                         .then(responce=>{
@@ -147,6 +155,7 @@ function Preview(p:Props){
         </Box>
         
     
+
     );
 }
 export default Preview;

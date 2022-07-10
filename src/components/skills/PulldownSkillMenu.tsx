@@ -17,13 +17,14 @@ type Skill = {
     skillid: number;
     name: string;
     rank: number;
+    type: string;
 };
 
 
 
 export default function Sample(props: Props) {
 
-    const [inputValue, setInputValue] = useState<Skill>({id: 0,skillid: 0, name: "",rank: 0});
+    const [inputValue, setInputValue] = useState<Skill>({id: 0,skillid: 0, name: "",rank: 0,type: ""});
     const [list, serList] = useState([
                                         { id: 1, name: "java" },
                                         { id: 2, name: 'c++'},
@@ -44,6 +45,7 @@ export default function Sample(props: Props) {
         skillid: number;
         name: string;
         rank: number;
+        type: string;
     };
 
     
@@ -64,6 +66,7 @@ export default function Sample(props: Props) {
             skillid: inputValue.id,
             name: inputValue.name,
             rank: 9,
+            type: props.title.slice( 0, -1 )
         };
         for(var i = 0;i < props.skills.length;i++){
             if(props.skills[i].skillid == newskill.skillid){
