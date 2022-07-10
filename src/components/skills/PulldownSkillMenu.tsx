@@ -78,6 +78,7 @@ export default function Sample(props: Props) {
         axios.get(`http://ec2-3-239-217-103.compute-1.amazonaws.com/api/skills`)
         .then(res => {
           console.log(res.data.skills[props.title]);
+          serList(res.data.skills[props.title]);
         })
             
     }, []);
