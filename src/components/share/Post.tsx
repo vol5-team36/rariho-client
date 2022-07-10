@@ -12,8 +12,8 @@ const Post = () => {
         
     let id =useParams();
 
-
-    axios.get(`http://ec2-3-239-217-103.compute-1.amazonaws.com/api/profiles/` + id.id)
+    console.log(process.env.REACT_APP_API_URL + `/api/profiles/` + id.id)
+    axios.get(process.env.REACT_APP_API_URL + `/api/profiles/` + id.id)
         .then(res => {
 
         })
