@@ -1,6 +1,7 @@
 import React,{useState}from 'react';
 import {Typography} from '@mui/material';
 import {Box} from '@mui/material';
+import {Button} from '@mui/material';
 import axios from 'axios';
 import pic from "../Images/E.png"
 
@@ -20,8 +21,6 @@ type Props = {
     skills:any,
     icon:any,
 }
-<<<<<<< Updated upstream
-=======
 type Skill = {
     id: number;
     order:number;
@@ -30,7 +29,6 @@ type Skill = {
     rank: number;
     type: string;
 };
->>>>>>> Stashed changes
 function Rank(i:number){
     switch(i){
         case 1:
@@ -53,9 +51,7 @@ function Rank(i:number){
             return('f');
     }
 }
-<<<<<<< Updated upstream
-function Preview(p:Props){
-=======
+
 
 function getBase64(file:any) {
     if(!file)return "";
@@ -86,7 +82,6 @@ function Preview(p:Props){
             "skills":p.skills
     }
     let profile_id=0;
->>>>>>> Stashed changes
     return(
         <Box component = "div" sx={{
             //color:'primary.main',
@@ -137,9 +132,7 @@ function Preview(p:Props){
                 }}
             />
             </div>
-<<<<<<< Updated upstream
             
-=======
 
             <Button onClick={()=>axios.post('http://ec2-3-239-217-103.compute-1.amazonaws.com/api/profiles',data)
                                         .then(responce=>{
@@ -152,9 +145,8 @@ function Preview(p:Props){
             <div>{inputValue!=0?"share/"+inputValue:"no rink"}</div>
 
         </Box>
->>>>>>> Stashed changes
         
-        </Box>
+    
     );
 }
 export default Preview;
