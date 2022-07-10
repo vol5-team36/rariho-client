@@ -39,25 +39,23 @@ function Preview(p:Props){
                 </h1>
             </Typography> 
             
-            {p.icon.map((image) => (
-                <div
+
+            <div
+            style={{
+                position: "relative",
+                width: "40%"
+            }}
+            >
+            <img
+                src={
+                URL.createObjectURL(p.icon[0])
+                }
                 style={{
-                    position: "relative",
-                    width: "40%"
+                width: "100%"
                 }}
-                >
-                <img
-                    src={
-                    URL.createObjectURL(image)
-                    }
-                    style={{
-                    width: "100%"
-                    }}
-                />
-                </div>
+            />
+            </div>
         
-      ))    
-      }
         </Box>
     );
 }
