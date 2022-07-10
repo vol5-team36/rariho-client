@@ -1,6 +1,15 @@
 import React from 'react';
 import {Typography} from '@mui/material';
 import {Box} from '@mui/material';
+import pic from "../Images/E.png"
+
+const ErrorImage = (e: any) => {
+    if (e == undefined) return pic;
+    return URL.createObjectURL(e)
+};
+
+
+
 type Props = {
     name:string,
     twitter:string,
@@ -39,7 +48,6 @@ function Preview(p:Props){
                 </h1>
             </Typography> 
             
-
             <div
             style={{
                 position: "relative",
@@ -48,13 +56,15 @@ function Preview(p:Props){
             >
             <img
                 src={
-                URL.createObjectURL(p.icon[0])
+                    //URL.createObjectURL(p.icon[0])
+                    ErrorImage(p.icon[0])
                 }
                 style={{
                 width: "100%"
                 }}
             />
             </div>
+            
         
         </Box>
     );
