@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Container, Stack, TextField } from '@mui/material'
-import CommentForm from '../components/CommentForm';
+import {Stack, TextField } from '@mui/material'
+import ImageUpload from '../components/ImageUpload';
 
 type Props = {
   name: any
@@ -51,7 +51,7 @@ const BasicForm = (props: Props) => {
                 <TextField required label="その他URL" defaultValue={props.url} onChange={(e) => urlChange(e)} />
                 <TextField required inputProps={{ maxLength: 40 }} label="ひとこと" defaultValue={props.comment} onChange={(e) => commentChange(e)} />
 
-                <CommentForm />
+                <ImageUpload />
 
                     
 

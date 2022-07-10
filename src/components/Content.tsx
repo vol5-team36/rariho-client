@@ -1,7 +1,5 @@
 import React from 'react'
-import { Button, Container, Stack, TextField } from '@mui/material'
-import CommentForm from './ImageUpload';
-import CommentForm from './CommentForm';
+import { Button} from '@mui/material'
 import SelectSkills from '../pages/SelectSkills'
 import Grid from '@mui/material/Grid';
 import Stepper from '@mui/material/Stepper';
