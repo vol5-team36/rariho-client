@@ -6,16 +6,20 @@ import CircularProgress from "@mui/material/CircularProgress";
 import IconButton from "@mui/material/IconButton";
 import CancelIcon from "@mui/icons-material/Cancel";
 
-export default () => {
-  const [isCommentSending, setIsCommentSending] = useState(false);
+type Props = {
+  defaultValue: any;
+  onChange: any;
+}
+
+export default (props: Props) => {
   const [images, setImages] = useState<File[]>([]);
   const maxImagesUpload = 1; // 画像を最大1枚まで選択・アップロード
-  const [commentText, setCommentText] = useState<string>("");
   const inputId = Math.random().toString(32).substring(2);
+
+  
 
   const handleOnSubmit = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
-    setIsCommentSending(true);
 
     const target = e.target as typeof e.target & {
       comment: { value: string };
@@ -26,9 +30,6 @@ export default () => {
       data.append("images[]", image);
     });
     data.append("comment", target.comment?.value || "");
-    // コメントを送信
-    // const postedComment = await axios.post("/api/v1/comments", data);
-    setIsCommentSending(false);
 
     alert("送信完了しました。");
   };
@@ -36,7 +37,9 @@ export default () => {
   const handleOnAddImage = (e: any) => {
     if (!e) return;
     setImages([...images, ...e]);
-    alert("画像アップロード完了");
+    //alert(typeof(e));
+    //alert("画像アップロード完了");
+    console.log("画像アップロード完了");
   };
 
   const handleOnRemoveImage = (index: number) => {
@@ -45,26 +48,18 @@ export default () => {
     const newImages = [...images];
     newImages.splice(index, 1);
     setImages(newImages);
-
+    props.onChange(newImages)
   };
 
+  const [user, setUser] = React.useState(null);
+  React.useEffect(() => {
+    handleOnAddImage(props.defaultValue)
+  },[]);
+  
   return (
     <form action="" onSubmit={(e) => handleOnSubmit(e)}>
       
-      {/*コメント入力可能(仕様外)
-        <TextField
-        name="comment"
-        value={commentText}
-        multiline
-        minRows={1}
-        maxRows={20}
-        placeholder="コメントを書く"
-        fullWidth
-        variant="standard"
-        disabled={isCommentSending}
-        onChange={(e) => setCommentText(e.target.value)}
-      />
-      */}
+      
 
       {/* 1つのボタンで画像を選択する */}
       <label htmlFor={inputId}>
@@ -81,6 +76,7 @@ export default () => {
           accept="image/*,.png,.jpg,.jpeg,.gif"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 {
+                    props.onChange(e.target.files);
                     handleOnAddImage(e.target.files)
                 }
           }
@@ -109,7 +105,9 @@ export default () => {
             <CancelIcon />
           </IconButton>
           <img
-            src={URL.createObjectURL(image)}
+            src={
+              URL.createObjectURL(image)
+            }
             style={{
               width: "100%"
             }}
@@ -118,22 +116,6 @@ export default () => {
         
       ))    
       }
-      <br />
-      <br />
-      {
-      /*isCommentSending ? (
-        <CircularProgress />
-      ) : (
-        <Button
-          variant="contained"
-          type="submit"
-          disableElevation
-          disabled={!commentText}
-        >
-          投稿
-        </Button>
-      )
-      */}
     </form>
   );
 };

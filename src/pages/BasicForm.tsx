@@ -1,6 +1,6 @@
 import React from 'react'
 import {Stack, TextField } from '@mui/material'
-import ImageUpload from '../components/ImageUpload';
+import ImageUpload from '../components/basic/ImageUpload';
 
 type Props = {
   name: any
@@ -8,11 +8,14 @@ type Props = {
   github: any
   url: any
   comment: any
+  icon: any
+  
   namemethod: any
   twittermethod: any
   githubmethod: any
   urlmethod: any
   commentmethod: any
+  iconmethod: any
 }
 
 
@@ -22,7 +25,6 @@ const BasicForm = (props: Props) => {
     console.log(e.target.value);
     props.namemethod(e.target.value);
   };
-
   const twitterChange = (e: any) => {
     console.log(e.target.value);
     props.twittermethod(e.target.value);
@@ -39,6 +41,11 @@ const BasicForm = (props: Props) => {
     console.log(e.target.value);
     props.commentmethod(e.target.value);
   };
+  const iconChange = (e: any) => {
+    //console.log(e.target.value);
+    //alert("アイコン読み込み完了");
+    props.iconmethod(e);
+  };
 
 
 
@@ -51,11 +58,8 @@ const BasicForm = (props: Props) => {
                 <TextField required label="その他URL" defaultValue={props.url} onChange={(e) => urlChange(e)} />
                 <TextField required inputProps={{ maxLength: 40 }} label="ひとこと" defaultValue={props.comment} onChange={(e) => commentChange(e)} />
 
-                <ImageUpload />
-
-                    
-
-            </Stack>
+                <ImageUpload defaultValue={props.icon} onChange={(e: any) => iconChange(e)} />
+        </Stack>
     </div>
   )
 }

@@ -28,6 +28,7 @@ export default function Content() {
     const [github, setGithub] = React.useState("");
     const [url, seturl] = React.useState("");
     const [comment, setComment] = React.useState("");
+    const [icon, setIcon] = React.useState("");
     const [skills, setSkills] = React.useState<Skill[]>([]);
     const steps = getSteps();
 
@@ -43,7 +44,7 @@ export default function Content() {
     const getStepContent = (stepIndex: number) => {
         switch (stepIndex) {
             case 0:
-                return <BasicForm name={name} twitter={twitter} github={github} url={url} comment={comment} namemethod={setName} twittermethod={setTwitter} githubmethod={setGithub} urlmethod={seturl} commentmethod={setComment} />;
+                return <BasicForm name={name} twitter={twitter} github={github} url={url} comment={comment} icon={icon} namemethod={setName} twittermethod={setTwitter} githubmethod={setGithub} urlmethod={seturl} commentmethod={setComment} iconmethod={setIcon} />;
             case 1:
                 return <SelectSkills method={setSkills}/>;
             case 2:
